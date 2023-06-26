@@ -3,7 +3,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.all
+    # @tweets = Tweet.all
+    @tweets = Tweet.all.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -25,7 +26,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to tweet_url(@tweet), notice: "Tweet was successfully created." }
+        format.html { redirect_to tweet_url(@tweet), notice: "Tweet fue agregado con exitosamente." }
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to tweet_url(@tweet), notice: "Tweet was successfully updated." }
+        format.html { redirect_to tweet_url(@tweet), notice: "Tweet fue actualizado con exitosamente." }
         format.json { render :show, status: :ok, location: @tweet }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class TweetsController < ApplicationController
     @tweet.destroy
 
     respond_to do |format|
-      format.html { redirect_to tweets_url, notice: "Tweet was successfully destroyed." }
+      format.html { redirect_to tweets_url, notice: "Tweet fue eliminado con exitosamente." }
       format.json { head :no_content }
     end
   end
