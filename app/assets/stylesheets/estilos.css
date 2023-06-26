@@ -1,0 +1,15 @@
+.input {
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.twitt-word{
+    color: white;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.card{
+    margin: 15px;
+}
