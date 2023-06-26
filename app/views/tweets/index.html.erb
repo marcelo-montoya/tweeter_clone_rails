@@ -1,6 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tweets</h1>
+<h1>Tweeter</h1>
+
+<div>
+
+<%= form_with url: tweets_path, method: :get do |form| %>
+  <%= form.text_field :query_text, placeholder: t('Write some here'), onChange: '
+  this.form.requestSubmit()', value: params[:query_text]%>
+
+<% end %>
+
+</div>
 
 <div id="tweets">
   <% @tweets.each do |tweet| %>
@@ -11,6 +21,6 @@
   <% end %>
 </div>
 
-<%= will_paginate @posts %>
-
 <%= link_to "New tweet", new_tweet_path %>
+
+<%= will_paginate @posts %>
