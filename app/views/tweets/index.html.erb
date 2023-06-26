@@ -1,26 +1,41 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tweeter</h1>
 
-<div>
 
-<%= form_with url: tweets_path, method: :get do |form| %>
-  <%= form.text_field :query_text, placeholder: t('Write some here'), onChange: '
-  this.form.requestSubmit()', value: params[:query_text]%>
+<nav class="navbar bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand"><i class="fa-brands fa-twitter fa-flip" style="color: #ffffff;"></i></a>
+    <h1 class="twitt-word">Twitter</h1>
+    <form class="d-flex" role="search">      
+      <%= form_with url: tweets_path, method: :get do |form| %>
+        <%= form.text_field :query_text, class:"input", onChange: '
+        this.form.requestSubmit()', value: params[:query_text]%>
+      <% end %>
+    </form>
+  </div>
+</nav>
 
-<% end %>
 
-</div>
-
-<div id="tweets">
+<div id="tweets ">
   <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
+    <div class="card text-center">
+        
+        <%= render tweet %>
+        <p>
+          <%= link_to "Ver twitt", tweet, class:"btn btn-primary" %>
+        </p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New tweet", new_tweet_path %>
 
-<%= will_paginate @posts %>
+<div class="d-flex justify-content-around">
+
+  <%= link_to "Nuevo twitt", new_tweet_path, class:"btn btn-primary" %>
+
+  <%= will_paginate @tweets, renderer: WillPaginate::ActionView::BootstrapLinkRenderer%>
+</div>
+
+
+
+

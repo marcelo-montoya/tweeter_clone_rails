@@ -74,3 +74,6 @@ end
 gem 'faker'
 gem 'will_paginate', '~> 4.0'
 gem 'pg_search', '~> 2.3', '>= 2.3.6'
+
+
+gem 'will_paginate-bootstrap-style'

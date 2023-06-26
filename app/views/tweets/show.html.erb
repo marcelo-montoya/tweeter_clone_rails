@@ -1,10 +1,26 @@
-<p style="color: green"><%= notice %></p>
+<nav class="navbar bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand"><i class="fa-brands fa-twitter fa-flip" style="color: #ffffff;"></i></a>
+    <h1 class="twitt-word">Twitter</h1>
+    <form class="d-flex" role="search">      
 
-<%= render @tweet %>
+    <p style="color: white"><%= notice %></p>
+    </form>
+  </div>
+</nav>
 
-<div>
-  <%= link_to "Edit this tweet", edit_tweet_path(@tweet) %> |
-  <%= link_to "Back to tweets", tweets_path %>
+    <div class="card text-center">
+        
+      <%= render @tweet %>
 
-  <%= button_to "Destroy this tweet", @tweet, method: :delete %>
-</div>
+      <div>
+        <div class="d-flex justify-content-around p-2">
+        
+          <%= link_to "Editar twitt", edit_tweet_path(@tweet), class:"btn btn-primary" %>
+          <%= link_to "Volver a twitt", tweets_path, class:"btn btn-primary" %>
+
+          <%= button_to "Eliminar twitt", @tweet, method: :delete, class:"btn btn-primary gap-0 row-gap-3" %>
+        
+        </div>
+      </div>
+    </div>
